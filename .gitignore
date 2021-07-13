@@ -1,6 +1,22 @@
-# ignore target folder
- /target/
+# target folder
+/target/
 
-# ignore IntelliJ files
+# IntelliJ files
 .idea/
 *.iml
+
+# CI config
+/ci/
+/auth/
+
+# Allure test report
+/allure-*/
+
+# Allure config
+categories.json
+
+# local development
+entrypoint.sh
+reports-generator.sh
+Makefile
+Dockerfile

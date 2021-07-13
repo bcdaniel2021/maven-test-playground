@@ -8,9 +8,7 @@
   <artifactId>maven-unit-and-integration-tests</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>maven-unit-and-integration-tests</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>maven-test-playground</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,13 +55,6 @@
       </executions>
     </plugin>
 
-    <!-- maven-surefire-plugin is designed for running unit tests and if any of the tests fail then it will fail the build immediately.
-         The maven surefire plugin is called implicitly by the maven lifecycle in the appropriate phase so it is a ‘special’ plugin.
-         We don´t need to define it inside pom.xml it will be downloaded and executed when maven needs it.
-         The maven surefire plugin has only one goal defined:
-         test: Allow us to run the unit tests of the application
-         There is no need to define that goal inside pom.xml, as we said before, maven will invoke that goal when
-         the maven lifecycle have to run the unit tests. -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
@@ -76,16 +67,12 @@
       </configuration>
     </plugin>
 
-    <!-- maven-failsafe-plugin is designed for running integration tests, and decouples failing the build if
-         there are test failures from actually running the tests. -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-failsafe-plugin</artifactId>
       <version>${maven-failsafe-plugin.version}</version>
       <configuration>
-        <!-- run unit tests with utf8 encoding -->
         <argLine>-Dfile.encoding=UTF-8</argLine>
-        <!-- Set this to true to skip integration tests. -->
         <skipTests>${skipITs}</skipTests>
       </configuration>
       <executions>
@@ -100,13 +87,12 @@
 
     </plugins>
 
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
